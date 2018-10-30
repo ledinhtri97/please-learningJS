@@ -1,0 +1,14 @@
+{
+	"users":[
+		{
+			"id":1, "name":"json-server_1", "phone":"01438434"
+		},
+		{
+			"id":2, "name":"json-server_2", "phone":"01323244"
+		},
+		{
+			"id":3, "name":"json-server_3", "phone":"01984334"
+		}
+
+	]
+}
