@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <input type="text" id="searchInput" placeholder="Search by phone number..." />
+    <ul id="userList">
+    </ul>
+    <input type="text" id="name" placeholder="name" />
+    <input type="text" id="phone" placeholder="phone" />
+    <button type="" id="addUser">Add</button>
+
+
+    <script type="text/javascript" charset="utf-8" async defer>
+    var userKeyStogare = 'users';
+    
+    var dataString = localStorage.getItem(userKeyStogare);
+    var users = [];
+
+    if (dataString){
+        users = JSON.parse(dataString);
+    }
+
+    var userList = document.getElementById('userList');
+    var searchInput = document.getElementById('searchInput');
+    var btnadd = document.getElementById('addUser');
+
+    function render(users) {
+    	// console.lo1g(users);
+        var content = users.map(function(user) {
+            return '<li>' + user.name + ' - ' + user.phone + '</li>';
+        });
+        userList.innerHTML = content.join('');
+    }
+
+    btnadd.onclick = function add(){
+        
+        var name = document.getElementById('name');
+        var phone = document.getElementById('phone');
+        if(name.value && phone.value){
+            users.push({name: name.value, phone: phone.value})
+            localStorage.setItem(userKeyStogare, JSON.stringify(users));
+            render(users);
+        }
+        else{
+            alert("Have input both name/phone yet?");
+        }
+    }
+
+    render(users);
+
+    searchInput.addEventListener('keyup', function(event) {
+        // sự kiện 'change' chỉ xảy ra khi input bị mất focus
+        // sử dụng sự kiện keyup để tìm kiếm người dùng có số điện thoại khớp với nội dung tìm kiếm.
+        // Gợi ý: 
+        // - biến value dưới đây là giá trị của input tại thời điểm gõ phím
+        // - sử dụng array.filter và string.indexOf để lọc users array, trả về những phần tử có số điện thoại chứa string lưu trong biến `value`
+        // Sử dụng Chrome Developer Tools để xem giá trị hiển thị ra sau mỗi lần gõ
+        var value = searchInput.value;
+        var us = users.filter(e => e.phone.includes(value));
+        render(us);
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>input</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<p id="count">0</p>
+	<input id="ip" type="text">
+	<button id="click">click</button>
+	<script type="text/javascript" charset="utf-8" async defer>
+		var count = 0;
+		var counter = document.getElementById('count');
+		counter.innerHTML = count;
+		// Tạo 1 button mới nằm dưới p
+		// Viết code sao cho khi click button đó thì giá trị biến `count` tăng 1 đơn vị và nội dung của `counter` cũng thay đổi theo`
+		var cl = document.getElementById('click');
+		
+		cl.onclick=function(event) {
+			/* Act on the event */
+			console.log("aaaa");
+			counter.innerHTML = document.getElementById('ip').value;
+			document.getElementById('ip').value='';
+		};
+	</script>
+</body>
+</html>
