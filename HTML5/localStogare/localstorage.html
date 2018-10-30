@@ -31,6 +31,8 @@
     var searchInput = document.getElementById('searchInput');
     var btnadd = document.getElementById('addUser');
 
+    searchInput.value = sessionStorage.getItem('draft');
+
     function render(users) {
     	// console.lo1g(users);
         var content = users.map(function(user) {
@@ -63,6 +65,7 @@
         // - sử dụng array.filter và string.indexOf để lọc users array, trả về những phần tử có số điện thoại chứa string lưu trong biến `value`
         // Sử dụng Chrome Developer Tools để xem giá trị hiển thị ra sau mỗi lần gõ
         var value = searchInput.value;
+        sessionStorage.setItem('draft', value);
         var us = users.filter(e => e.phone.includes(value));
         render(us);
     });
